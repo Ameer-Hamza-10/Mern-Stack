@@ -26,6 +26,9 @@ app.use('/api/admin', admin_route)
 
 app.use(errorMiddleware)
 
+app.get("/", (req, res) => {
+    res.send("API is working!");
+  });
 
 
 const PORT = process.env.PORT || 1000;
