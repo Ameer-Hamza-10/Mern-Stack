@@ -12,9 +12,10 @@ const admin_route = require('./Router/admin-route')
 
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // Replace with your frontend URL
+    origin: '*', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Allowed HTTP methods
     credentials: true, // Allow cookies to be sent
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }
 app.use(express.json())
 app.use(cors(corsOptions))
@@ -26,9 +27,6 @@ app.use('/api/admin', admin_route)
 
 app.use(errorMiddleware)
 
-app.get("/", (req, res) => {
-    res.send("API is working!");
-  });
 
 
 const PORT = process.env.PORT || 1000;
